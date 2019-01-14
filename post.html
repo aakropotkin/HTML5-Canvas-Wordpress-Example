@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head></head>
+    <body>
+        <!-- This could be the body of a Wordpress blogpost. -->
+        <iframe id='canvasContainer' width='600' height='600'
+                scrolling='no' frameBorder='0'
+                style='overflow: hidden;'>
+        </iframe>
+        <script type='text/javascript'>
+            var canvasContainerElement = null;
+            var canvas = null;
+            var context = null;
+
+            jQuery (window).load (function ($) {
+                initializeCanvas ();
+                draw ();
+            });
+
+            function initializeCanvas () {
+                canvasContainerElement = document.getElementById ('canvasContainer');
+                var canvasElement = canvasContainerElement.contentDocument.createElement ('canvas');
+                canvasElement.id = 'myCanvas';
+                canvasElement.width = canvasContainerElement.width;
+                canvasElement.height = canvasContainerElement.height;
+                canvasContainerElement.contentDocument.body.appendChild (canvasElement);
+                canvas = canvasContainerElement.contentDocument.getElementById ('myCanvas');
+                context = canvas.getContext ('2d');
+            };
+
+            function draw () {
+                context.fillStyle = 'red';
+                context.fillRect (10, 10, 50, 50);
+            };
+
+        </script>
+    </body>
+</html>
